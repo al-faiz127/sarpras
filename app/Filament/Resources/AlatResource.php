@@ -32,6 +32,9 @@ class AlatResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('foto')
+                        ->label('foto')
+                        ->required(),
                 Forms\Components\TextInput::make('name')
                     ->label('Nama')
                     ->placeholder('Contoh: Laptop'),
@@ -51,6 +54,8 @@ class AlatResource extends Resource
                     ->label('#')
                     ->rowIndex()
                     ->width('10px'),
+
+                Tables\Columns\ImageColumn::make('foto')->circular(),
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\TextColumn::make('count'),
             ])

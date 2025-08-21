@@ -20,11 +20,11 @@
         <div class="card border border-light-subtle rounded-3 shadow-sm mt-5">
           <div class="card-body p-3 p-md-4 p-xl-5">
             <div class="text-center mb-3">
-              <a href="#!">
+              <!-- <a href="#!">
                 <img src="https://www.itsolutionstuff.com/assets/images/footer-logo-2.png" alt="BootstrapBrain Logo" width="250">
-              </a>
+              </a> -->
             </div>
-            <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Sign in to your account</h2>
+            <h2 class="fs-6 fw-normal text-center text-secondary mb-4">login</h2>
             <form method="POST" action="{{ route('login.post') }}">
               @csrf
 
@@ -58,23 +58,14 @@
                   @enderror
                 </div>
                 <div class="col-12">
-                  <div class="d-flex gap-2 justify-content-between">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" name="rememberMe" id="rememberMe">
-                      <label class="form-check-label text-secondary" for="rememberMe">
-                        Keep me logged in
-                      </label>
-                    </div>
-                    <a href="#!" class="link-primary text-decoration-none">{{ __('forgot password?') }}</a>
+                <div">
+                  <div class="col-12">
+                    <p class="m-0 text-secondary text-center">Don't have an account? <a href="{{ route('register') }}" class="link-primary text-decoration-none">Sign up</a></p>
                   </div>
-                </div>
                 <div class="col-12">
                   <div class="d-grid my-3">
                     <button class="btn btn-primary btn-lg" type="submit">{{ __('Login') }}</button>
                   </div>
-                </div>
-                <div class="col-12">
-                  <p class="m-0 text-secondary text-center">Don't have an account? <a href="{{ route('register') }}" class="link-primary text-decoration-none">Sign up</a></p>
                 </div>
               </div>
             </form>

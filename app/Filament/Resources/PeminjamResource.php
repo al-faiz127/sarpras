@@ -50,7 +50,11 @@ class PeminjamResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                 Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make()
+                        ->modalWidth('xl'),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -70,8 +74,8 @@ class PeminjamResource extends Resource
     {
         return [
             'index' => Pages\ListPeminjams::route('/'),
-            'create' => Pages\CreatePeminjam::route('/create'),
-            'edit' => Pages\EditPeminjam::route('/{record}/edit'),
+            // 'create' => Pages\CreatePeminjam::route('/create'),
+            // 'edit' => Pages\EditPeminjam::route('/{record}/edit'),
         ];
     }
 }
