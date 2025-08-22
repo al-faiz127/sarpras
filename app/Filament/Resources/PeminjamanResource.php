@@ -52,13 +52,13 @@ class PeminjamanResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\ActionGroup::make([
-                    Tables\Actions\EditAction::make()
-                        ->modalWidth('xl'),
-                    Tables\Actions\DeleteAction::make(),
-                ])
-            ])
+            // ->actions([
+            //     Tables\Actions\ActionGroup::make([
+            //         Tables\Actions\EditAction::make()
+            //             ->modalWidth('xl'),
+            //         Tables\Actions\DeleteAction::make(),
+            //     ])
+            // ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -77,7 +77,7 @@ class PeminjamanResource extends Resource
     {
         return [
             'index' => Pages\ListPeminjamen::route('/'),
-            'create' => Pages\CreatePeminjaman::route('/create'),
+            // 'create' => Pages\CreatePeminjaman::route('/create'),
             'edit' => Pages\EditPeminjaman::route('/{record}/edit'),
         ];
     }
