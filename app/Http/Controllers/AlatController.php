@@ -6,16 +6,25 @@ use App\Models\Alat;
 
 use Illuminate\View\View;
 
+use App\Models\Peminjaman;
+
 use Illuminate\Http\Request;
 
 class AlatController extends Controller
 {
     public function index() : View
     {
-        //get all products
-        $alat = Alat::latest()->paginate(10);
+        $jumlahJenisAlat = Alat::count();
 
-        //render view with products
-        return view('alat.index', compact('alat'));
+        $totalUnitAlat = Alat::sum('count');
+
+        $borrowedAlatCount = Peminjaman::whereNull('tanggal_kembali')->count();
+
+        $availableAlatCount = $totalUnitAlat - $borrowedAlatCount;
+
+        $barangPopuler = Alat::orderByDesc('count')->take(3)->get();
+
+        return view('alat.index', compact('jumlahJenisAlat', 'availableAlatCount','barangPopuler'));
+
     }
 }

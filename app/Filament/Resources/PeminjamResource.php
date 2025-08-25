@@ -40,7 +40,7 @@ class PeminjamResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
-                Tables\Columns\TextColumn::make('alat_id'),
+                Tables\Columns\TextColumn::make('alat_id')->label('Alat'),
                 Tables\Columns\TextColumn::make('major'),
                 Tables\Columns\TextColumn::make('kelas'),
                 Tables\Columns\TextColumn::make('nisn'),
