@@ -78,6 +78,9 @@
                   <div class="d-grid my-3">
                     <button class="btn btn-primary btn-lg" type="submit">{{ __('Register') }}</button>
                   </div>
+                  <div class="d-grid my-3 justify-content-center">
+                     <a href="{{ route('alat.index') }}"><button class="btn btn-primary btn-lg" type="button"> kembali</button></a>
+                  </div>
                 </div>
                 <div class="col-12">
                   <p class="m-0 text-secondary text-center">Have an account? <a href="{{ route('login') }}" class="link-primary text-decoration-none">Sign in</a></p>
