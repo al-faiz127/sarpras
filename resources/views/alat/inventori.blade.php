@@ -26,13 +26,14 @@
             </div>
             <div>
                 <ul class="flex items-center gap-9 px-9 py-4">
-                    <li><a aria-current="page" class="rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105">HOME</a></li>
                     <li>
-                        <a class="relative overflow-hidden transition-all duration-300 ease-in-out text-white px-3 py-2 group" href="{{ route('alat.inventori') }}">
-                            <span class="relative z-10">INVENTORY</span>
+                        <a class="relative overflow-hidden transition-all duration-300 ease-in-out text-white px-3 py-2 group" href="{{ route('alat.index') }}">
+                            <span class="relative z-10">HOME</span>
                             <span class="absolute top-0 left-0 w-0 h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-500 group-hover:w-full z-0 rounded-md"></span>
                         </a>
                     </li>
+                    <li><a aria-current="page" class="rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105">INVENTORY</a></li>
+                    
                 </ul>
             </div>
             <div> 
@@ -40,38 +41,12 @@
             </div>
         </nav>
     </header>
-
-    <main>
-        <div class="container mx-auto px-4 py-16 text-center">
-            <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 md:text-6xl fade-in">Selamat Datang di Portal Sarana & Prasarana</h1>
-            <p class="mt-4 text-lg text-gray-400 fade-in" style="animation-delay: 0.2s;">
-                Kelola dan temukan semua aset yang Anda butuhkan dengan mudah.
-            </p>
-            
-            <section class="bg-gray-900 py-12 mt-16 rounded-3xl shadow-2xl fade-in" style="animation-delay: 0.4s;">
+    <section class="py-12 fade-in" style="animation-delay: 0.6s;">
                 <div class="container mx-auto px-4">
-                    <h2 class="text-center text-3xl font-bold text-white">Ringkasan Data</h2>
-                    <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
-                        
-                        <div class="rounded-xl bg-gray-800 p-6 shadow-md transition-transform transform hover:scale-105 hover:shadow-2xl border border-gray-700">
-                            <p class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">{{ $jumlahJenisAlat }}</p>
-                            <p class="mt-2 text-gray-400">Total jenis Barang Terdaftar</p>
-                        </div>
-                        
-                        <div class="rounded-xl bg-gray-800 p-6 shadow-md transition-transform transform hover:scale-105 hover:shadow-2xl border border-gray-700">
-                            <p class="text-5xl font-bold text-green-400">{{ $availableAlatCount }}</p>
-                            <p class="mt-2 text-gray-400">Barang Tersedia</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="py-12 fade-in" style="animation-delay: 0.6s;">
-                <div class="container mx-auto px-4">
-                    <h2 class="text-center text-3xl font-bold text-white">Barang Populer</h2>
-                    <p class="text-center text-gray-400">Lihat barang-barang yang sering dicari</p>
+                    <h2 class="text-center text-3xl font-bold text-white">Barang</h2>
+                    <p class="text-center text-gray-400">Lihat barang-barang yang tersedia</p>
                     <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                        @foreach($barangPopuler as $alat)
+                        @foreach($inventoryItems as $alat)
                             <div class="rounded-lg bg-gray-800 p-4 shadow-md transition-transform transform hover:scale-105 hover:shadow-lg border border-gray-700 flex flex-col justify-between">
                                 <img 
                                     src="{{ asset('storage/' . $alat->foto) }}" 
@@ -90,11 +65,5 @@
                     </div>
                 </div>
             </section>
-
-            <a href="{{ route('alat.inventori') }}" class="mt-12 inline-block rounded-full px-8 py-3 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-2xl">
-                Jelajahi Inventory
-            </a>
-        </div>
-    </main>
 </body>
 </html>

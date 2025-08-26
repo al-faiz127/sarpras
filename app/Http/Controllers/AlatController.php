@@ -8,6 +8,8 @@ use Illuminate\View\View;
 
 use App\Models\Peminjaman;
 
+use Illuminate\Http\RedirectResponse;
+
 use Illuminate\Http\Request;
 
 class AlatController extends Controller
@@ -26,5 +28,11 @@ class AlatController extends Controller
 
         return view('alat.index', compact('jumlahJenisAlat', 'availableAlatCount','barangPopuler'));
 
+    }
+    public function inventori()
+    {
+        $inventoryItems = Alat::all();
+
+        return view('alat.inventori', compact('inventoryItems'));
     }
 }
