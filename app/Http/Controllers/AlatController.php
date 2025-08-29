@@ -35,4 +35,10 @@ class AlatController extends Controller
 
         return view('alat.inventori', compact('inventoryItems'));
     }
+    public function pinjam(Request $request)
+    {
+        $alat = Alat::all();
+        $selectedAlatId = $request->alat_id ?? null;
+        return view('alat.pinjam', compact('alat', 'selectedAlatId'));
+    }
 }

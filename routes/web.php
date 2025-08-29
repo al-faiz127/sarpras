@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\AuthController;
 
 Route::get('/', [AlatController::class, 'index'])->name('alat.index');
 Route::get('/inventori', [AlatController::class, 'inventori'])->name('alat.inventori'); 
+Route::get('/pinjam', [AlatController::class, 'pinjam'])->name('alat.pinjam');
 
 
 Route::get("register", [AuthController::class, "register"]);
