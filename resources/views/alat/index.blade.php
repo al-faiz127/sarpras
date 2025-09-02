@@ -59,7 +59,7 @@
                         </div>
                         
                         <div class="rounded-xl bg-gray-800 p-6 shadow-md transition-transform transform hover:scale-105 hover:shadow-2xl border border-gray-700">
-                            <p class="text-5xl font-bold text-green-400">{{ $availableAlatCount }}</p>
+                            <p class="text-5xl font-bold text-green-400">{{ $totalUnitAlat }}</p>
                             <p class="mt-2 text-gray-400">Barang Tersedia</p>
                         </div>
                     </div>
@@ -90,6 +90,17 @@
                     </div>
                 </div>
             </section>
+            @if (session('error'))
+            <script>
+                alert("{{ session('error') }}");
+            </script>
+            @endif
+
+            @if (session('success'))
+            <script>
+                alert("{{ session('success') }}");
+            </script>
+            @endif
 
             <a href="{{ route('alat.inventori') }}" class="mt-12 inline-block rounded-full px-8 py-3 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-2xl">
                 Jelajahi Inventory

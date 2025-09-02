@@ -20,13 +20,9 @@ class AlatController extends Controller
 
         $totalUnitAlat = Alat::sum('count');
 
-        $borrowedAlatCount = Peminjaman::whereNull('tanggal_kembali')->count();
-
-        $availableAlatCount = $totalUnitAlat - $borrowedAlatCount;
-
         $barangPopuler = Alat::orderByDesc('count')->take(3)->get();
 
-        return view('alat.index', compact('jumlahJenisAlat', 'availableAlatCount','barangPopuler'));
+        return view('alat.index', compact('jumlahJenisAlat', 'totalUnitAlat','barangPopuler'));
 
     }
     public function inventori()
@@ -37,8 +33,31 @@ class AlatController extends Controller
     }
     public function pinjam(Request $request)
     {
+        if ($request->isMethod('post')) {
+
+            $request->validate([
+                'alat_id' => 'required|exists:alat,id',
+                'count' => 'required|integer',
+            ]);
+
+        
+            $alat = Alat::findOrFail($request->alat_id);
+
+            if ($alat->count >= $request->count) {
+                $alat->count -= $request->count;
+                $alat->save();
+
+                return redirect()->route('alat.index')->with('success', 'Berhasil meminjam alat!');
+            } else {
+                return redirect()->route('alat.index')->with('error', 'Stok alat tidak mencukupi!');
+            }
+        }
+    
         $alat = Alat::all();
         $selectedAlatId = $request->alat_id ?? null;
         return view('alat.pinjam', compact('alat', 'selectedAlatId'));
     }
+
 }
+
+
