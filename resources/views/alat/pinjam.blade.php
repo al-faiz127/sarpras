@@ -14,7 +14,9 @@
             <select id="alat_id" name="alat_id" required>
                 <option value="">-- Pilih Alat --</option>
                 @foreach ($alat as $item)
-                    <option value="{{ $item->id }}" @if(isset($selectedAlatId) && $selectedAlatId == $item->id) selected @endif>{{ $item->nama ?? $item->name }}</option>
+                    <option value="{{ $item->id }}" 
+                    @if(isset($selectedAlatId) && $selectedAlatId == $item->id) selected
+                    @endif>{{ $item->nama ?? $item->name }}</option>
                 @endforeach
             </select><br>
             <label for="count">Jumlah:</label>

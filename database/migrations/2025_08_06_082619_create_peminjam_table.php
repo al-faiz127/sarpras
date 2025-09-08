@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('peminjam', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->foreignUlid('alat_id')->nullable();
             $table->string('nisn')->nullable();
             $table->integer('jurusan')->nullable();
             $table->string('kelas')->nullable();

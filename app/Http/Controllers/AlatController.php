@@ -47,10 +47,8 @@ class AlatController extends Controller
                 $alat->count -= $request->count;
                 $alat->save();
 
-                return redirect()->route('alat.index')->with('success', 'Berhasil meminjam alat!');
-            } else {
-                return redirect()->route('alat.index')->with('error', 'Stok alat tidak mencukupi!');
-            }
+                return redirect()->route('alat.index');
+            } 
         }
     
         $alat = Alat::all();
