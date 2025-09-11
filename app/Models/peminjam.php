@@ -14,22 +14,14 @@ class Peminjam extends Model
     
     protected $fillable = [
         'name',
-        'alat_id',
         'major',
         'kelas',
         'nisn',
         'image',
     ];
     
-    // Relasi ke model Peminjaman (tabel perantara)
     public function peminjaman(): HasMany
     {
-        return $this->hasMany(Peminjaman::class, 'peminjam_id');
-    }
-
-    // Relasi langsung ke model Alat melalui tabel peminjaman
-    public function alat(): BelongsToMany
-    {
-        return $this->belongsToMany(Alat::class, 'peminjaman', 'peminjam_id', 'alat_id');
+        return $this->hasMany(Peminjaman::class, 'peminjam_id', 'id');
     }
 }

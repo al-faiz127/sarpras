@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Inventaris</title>
-    <style>
-        .fade-in {
-            animation: fadeIn 1s ease-in-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
-<body class="bg-gray-950 text-gray-200 font-poppins">
+@section('title')
+testing
+@endsection
+<div class="bg-gray-950 text-gray-200 font-poppins">
     <header class="relative bg-gray-900 border-b border-gray-700">
         <nav class="flex items-center justify-between w-[90%] mx-auto">
             <div>
@@ -26,7 +11,7 @@
                 <ul class="flex items-center gap-9 px-9 py-4">
                     <li><a aria-current="page" class="rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105">HOME</a></li>
                     <li>
-                        <a class="relative overflow-hidden transition-all duration-300 ease-in-out text-white px-3 py-2 group" href="{{ route('alat.inventori') }}">
+                        <a class="relative overflow-hidden transition-all duration-300 ease-in-out text-white px-3 py-2 group" href="#">
                             <span class="relative z-10">INVENTORY</span>
                             <span class="absolute top-0 left-0 w-0 h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-500 group-hover:w-full z-0 rounded-md"></span>
                         </a>
@@ -79,7 +64,7 @@
                                 <div class="mt-auto">
                                     <h3 class="text-xl font-semibold text-white">{{ $alat->name }}</h3>
                                     <p class="text-gray-400">Jumlah: {{ $alat->count }}</p>
-                                    <a href="{{ route('alat.pinjam',['alat_id' => $alat->id]) }}" class="mt-4 inline-block w-full text-center rounded-full px-4 py-2 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl">
+                                    <a href="#" class="mt-4 inline-block w-full text-center rounded-full px-4 py-2 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl">
                                         Pinjam
                                     </a>
                                 </div>
@@ -89,10 +74,9 @@
                 </div>
             </section>
 
-            <a href="{{ route('alat.inventori') }}" class="mt-12 inline-block rounded-full px-8 py-3 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-2xl">
+            <a href="#" class="mt-12 inline-block rounded-full px-8 py-3 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-2xl">
                 Jelajahi Inventory
             </a>
         </div>
     </main>
-</body>
-</html>
+</div>

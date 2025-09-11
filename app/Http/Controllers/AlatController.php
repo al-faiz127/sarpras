@@ -47,7 +47,7 @@ class AlatController extends Controller
                 $alat->count -= $request->count;
                 $alat->save();
 
-                return redirect()->route('alat.index');
+                return redirect()->route('peminjam.peminjam');
             } 
         }
     

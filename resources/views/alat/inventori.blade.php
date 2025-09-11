@@ -37,7 +37,7 @@
                 </ul>
             </div>
             <div> 
-                <button class="ml-auto transition duration-300 ease-in-out hover:scale-110 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl"><a href="{{ route('login') }}">login admin</a></button>
+                <button class="ml-auto transition duration-300 ease-in-out hover:scale-110 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl"><a href="/admin">login admin</a></button>
             </div>
         </nav>
     </header>
