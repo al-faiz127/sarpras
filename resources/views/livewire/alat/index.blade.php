@@ -11,7 +11,7 @@ testing
                 <ul class="flex items-center gap-9 px-9 py-4">
                     <li><a aria-current="page" class="rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105">HOME</a></li>
                     <li>
-                        <a class="relative overflow-hidden transition-all duration-300 ease-in-out text-white px-3 py-2 group" href="#">
+                        <a class="relative overflow-hidden transition-all duration-300 ease-in-out text-white px-3 py-2 group" href="/inventori">
                             <span class="relative z-10">INVENTORY</span>
                             <span class="absolute top-0 left-0 w-0 h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-500 group-hover:w-full z-0 rounded-md"></span>
                         </a>
@@ -19,7 +19,7 @@ testing
                 </ul>
             </div>
             <div> 
-                <button class="ml-auto transition duration-300 ease-in-out hover:scale-110 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl"><a href="/admin">login admin</a></button>
+                <button class="ml-auto transition duration-300 ease-in-out hover:scale-110 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl"><a href="/admin/login">login admin</a></button>
             </div>
         </nav>
     </header>
@@ -74,7 +74,7 @@ testing
                 </div>
             </section>
 
-            <a href="#" class="mt-12 inline-block rounded-full px-8 py-3 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-2xl">
+            <a href="/inventori" class="mt-12 inline-block rounded-full px-8 py-3 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-2xl">
                 Jelajahi Inventory
             </a>
         </div>

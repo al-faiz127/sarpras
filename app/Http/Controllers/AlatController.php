@@ -6,8 +6,6 @@ use App\Models\Alat;
 
 use Illuminate\View\View;
 
-use App\Models\Peminjaman;
-
 use Illuminate\Http\RedirectResponse;
 
 use Illuminate\Http\Request;
@@ -22,7 +20,7 @@ class AlatController extends Controller
 
         $barangPopuler = Alat::orderByDesc('count')->take(3)->get();
 
-        return view('alat.index', compact('jumlahJenisAlat', 'totalUnitAlat','barangPopuler'));
+        return view('livewire.alat.index', compact('jumlahJenisAlat', 'totalUnitAlat','barangPopuler'));
 
     }
     public function inventori()
@@ -57,5 +55,4 @@ class AlatController extends Controller
     }
 
 }
-
 
