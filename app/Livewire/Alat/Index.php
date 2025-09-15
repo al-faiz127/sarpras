@@ -10,45 +10,60 @@ class Index extends Component
 {
     use WithPagination;
 
+    public $showFormPinjam = false;
+    public $alatDipilih;
+    public $alat_id;
+    public $count;
+
     public function render()
     {
-        $jumlahJenisAlat = Alat::count();
-
-        $totalUnitAlat = Alat::sum('count');
-
-        $barangPopuler = Alat::orderByDesc('count')->take(3)->get();
-
-        return view('livewire.alat.index', compact('jumlahJenisAlat', 'totalUnitAlat','barangPopuler'));
-    }
-
-    public function inventori()
-    {
-        $inventoryItems = Alat::all();
-
-        return view('livewire.alat.inventori', compact('inventoryItems'));
-    }
-    public function pinjam(Request $request)
-    {
-        if ($request->isMethod('post')) {
-
-            $request->validate([
-                'alat_id' => 'required|exists:alat,id',
-                'count' => 'required|integer',
-            ]);
-
-        
-            $alat = Alat::findOrFail($request->alat_id);
-
-            if ($alat->count >= $request->count) {
-                $alat->count -= $request->count;
-                $alat->save();
-
-                return redirect()->route('peminjam.peminjam');
-            } 
+        if ($this->showFormPinjam && $this->alatDipilih) {
+            // render halaman pinjam
+            return view('livewire.alat.pinjam');
         }
-    
-        $alat = Alat::all();
-        $selectedAlatId = $request->alat_id ?? null;
-        return view('alat.pinjam', compact('alat', 'selectedAlatId'));
+
+        // render halaman utama
+        $jumlahJenisAlat = Alat::count();
+        $totalUnitAlat   = Alat::sum('count');
+        $barangPopuler   = Alat::orderByDesc('count')->take(3)->get();
+
+        return view('livewire.alat.index', compact('jumlahJenisAlat', 'totalUnitAlat', 'barangPopuler'));
+    }
+
+    public function bukaFormPinjam($id)
+    {
+        $this->alatDipilih = Alat::findOrFail($id);
+        $this->alat_id     = $this->alatDipilih->id;
+        $this->count       = 1;
+        $this->showFormPinjam = true;
+    }
+
+    public function submitPinjam()
+    {
+        $this->validate([
+            'alat_id' => 'required|exists:alats,id',
+            'count'   => 'required|integer|min:1',
+        ]);
+
+        $alat = Alat::findOrFail($this->alat_id);
+
+        if ($alat->count >= $this->count) {
+            $alat->count -= $this->count;
+            $alat->save();
+
+            session()->flash('success', 'Berhasil meminjam alat!');
+            $this->reset(['showFormPinjam', 'alatDipilih', 'alat_id', 'count']);
+        } else {
+            session()->flash('error', 'Stok tidak mencukupi.');
+        }
+    }
+
+    public function pinjam($alat_id)
+    {
+        $this->alatDipilih = Alat::findOrFail($alat_id);
+
+        return view('livewire.alat.pinjam', [
+            'alatDipilih' => $this->alatDipilih,
+        ]);
     }
 }

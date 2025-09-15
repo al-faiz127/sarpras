@@ -1,6 +1,7 @@
 @section('title')
 testing
 @endsection
+
 <div class="bg-gray-950 text-gray-200 font-poppins">
     <header class="relative bg-gray-900 border-b border-gray-700">
         <nav class="flex items-center justify-between w-[90%] mx-auto">
@@ -9,7 +10,9 @@ testing
             </div>
             <div>
                 <ul class="flex items-center gap-9 px-9 py-4">
-                    <li><a aria-current="page" class="rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105">HOME</a></li>
+                    <li>
+                        <a aria-current="page" class="rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-3 py-2 text-sm font-medium transition duration-300 transform hover:scale-105">HOME</a>
+                    </li>
                     <li>
                         <a class="relative overflow-hidden transition-all duration-300 ease-in-out text-white px-3 py-2 group" href="/inventori">
                             <span class="relative z-10">INVENTORY</span>
@@ -18,29 +21,32 @@ testing
                     </li>
                 </ul>
             </div>
-            <div> 
-                <button class="ml-auto transition duration-300 ease-in-out hover:scale-110 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl"><a href="/admin/login">login admin</a></button>
+            <div>
+                <button class="ml-auto transition duration-300 ease-in-out hover:scale-110 bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-5 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl">
+                    <a href="/admin/login">login admin</a>
+                </button>
             </div>
         </nav>
     </header>
 
     <main>
         <div class="container mx-auto px-4 py-16 text-center">
-            <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 md:text-6xl fade-in">Selamat Datang di Portal Sarana & Prasarana</h1>
+            <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 md:text-6xl fade-in">
+                Selamat Datang di Portal Sarana & Prasarana
+            </h1>
             <p class="mt-4 text-lg text-gray-400 fade-in" style="animation-delay: 0.2s;">
                 Kelola dan temukan semua aset yang Anda butuhkan dengan mudah.
             </p>
-            
+
+            {{-- Ringkasan --}}
             <section class="bg-gray-900 py-12 mt-16 rounded-3xl shadow-2xl fade-in" style="animation-delay: 0.4s;">
                 <div class="container mx-auto px-4">
                     <h2 class="text-center text-3xl font-bold text-white">Ringkasan Data</h2>
                     <div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
-                        
                         <div class="rounded-xl bg-gray-800 p-6 shadow-md transition-transform transform hover:scale-105 hover:shadow-2xl border border-gray-700">
                             <p class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">{{ $jumlahJenisAlat }}</p>
                             <p class="mt-2 text-gray-400">Total jenis Barang Terdaftar</p>
                         </div>
-                        
                         <div class="rounded-xl bg-gray-800 p-6 shadow-md transition-transform transform hover:scale-105 hover:shadow-2xl border border-gray-700">
                             <p class="text-5xl font-bold text-green-400">{{ $totalUnitAlat }}</p>
                             <p class="mt-2 text-gray-400">Barang Tersedia</p>
@@ -49,6 +55,7 @@ testing
                 </div>
             </section>
 
+            {{-- Barang Populer --}}
             <section class="py-12 fade-in" style="animation-delay: 0.6s;">
                 <div class="container mx-auto px-4">
                     <h2 class="text-center text-3xl font-bold text-white">Barang Populer</h2>
@@ -58,13 +65,13 @@ testing
                             <div class="rounded-lg bg-gray-800 p-4 shadow-md transition-transform transform hover:scale-105 hover:shadow-lg border border-gray-700 flex flex-col justify-between">
                                 <img 
                                     src="{{ asset('storage/' . $alat->foto) }}" 
-                                    alt="{{ $alat->name }}" 
+                                    alt="{{ $alat->nama }}" 
                                     class="h-48 w-full rounded-lg object-cover mb-4"
                                 >
                                 <div class="mt-auto">
                                     <h3 class="text-xl font-semibold text-white">{{ $alat->name }}</h3>
                                     <p class="text-gray-400">Jumlah: {{ $alat->count }}</p>
-                                    <a href="#" class="mt-4 inline-block w-full text-center rounded-full px-4 py-2 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl">
+                                    <a href="{{ route('alat.pinjam', ['alat_id' => $alat->id]) }}" class="mt-4 inline-block w-full text-center rounded-full px-4 py-2 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
                                         Pinjam
                                     </a>
                                 </div>
@@ -79,4 +86,7 @@ testing
             </a>
         </div>
     </main>
+
+
+
 </div>
