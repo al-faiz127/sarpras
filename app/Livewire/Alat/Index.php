@@ -35,7 +35,7 @@ class Index extends Component
     
     public function inventori()
     {
-        $inventoryItems = Alat::paginate(10);
+        $inventoryItems = Alat::all();
 
         return view('livewire.alat.inventori', compact('inventoryItems'));
     }
