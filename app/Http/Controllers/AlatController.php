@@ -29,30 +29,25 @@ class AlatController extends Controller
 
         return view('alat.inventori', compact('inventoryItems'));
     }
-    public function pinjam(Request $request)
+    public function pinjam($id)
     {
-        if ($request->isMethod('post')) {
+        $alat = Alat::findOrFail($id);
 
-            $request->validate([
-                'alat_id' => 'required|exists:alat,id',
-                'count' => 'required|integer',
-            ]);
-
-        
-            $alat = Alat::findOrFail($request->alat_id);
-
-            if ($alat->count >= $request->count) {
-                $alat->count -= $request->count;
-                $alat->save();
-
-                return redirect()->route('peminjam.peminjam');
-            } 
-        }
-    
-        $alat = Alat::all();
-        $selectedAlatId = $request->alat_id ?? null;
-        return view('alat.pinjam', compact('alat', 'selectedAlatId'));
+        return view('livewire.alat.pinjam', compact('alat'));
     }
+    public function submitPinjam(Request $request, $id)
+    {
+        $alat = Alat::findOrFail($id);
 
+        $request->validate([
+            'count' => 'required|integer|min:1',
+        ]);
+
+        if ($alat->count >= $request->count) {
+            $alat->decrement('count', $request->count);
+            return redirect()->route('alat.index')->with('success', 'Berhasil meminjam alat!');
+        } else {
+            return redirect()->back()->with('error', 'Stok tidak mencukupi.');
+        }
+    }
 }
-

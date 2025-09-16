@@ -43,7 +43,7 @@
                             <div class="mt-auto">
                                 <h3 class="text-xl font-semibold text-white">{{ $alat->name }}</h3>
                                 <p class="text-gray-400">Jumlah: {{ $alat->count }}</p>
-                                <a href="#" class="mt-4 inline-block w-full text-center rounded-full px-4 py-2 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl">
+                                <a href="{{ route('alat.pinjam', ['alat_id' => $alat->id]) }}" class="mt-4 inline-block w-full text-center rounded-full px-4 py-2 font-semibold text-white transition duration-300 bg-gradient-to-r from-blue-600 to-indigo-700 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer">
                                     Pinjam
                                 </a>
                             </div>
