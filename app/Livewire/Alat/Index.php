@@ -23,15 +23,6 @@ class Index extends Component
 
     return view('livewire.alat.index', compact('jumlahJenisAlat', 'totalUnitAlat', 'barangPopuler'));
 }
-
-
-    public function bukaFormPinjam($id)
-    {
-        $this->alatDipilih = Alat::findOrFail($id);
-        $this->alat_id     = $this->alatDipilih->id;
-        $this->count       = 1;
-        $this->showFormPinjam = true;
-    }
     
     public function inventori()
     {
